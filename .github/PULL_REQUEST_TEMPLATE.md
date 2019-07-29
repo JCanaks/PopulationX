@@ -5,7 +5,7 @@ This PR
 Please delete options that are not relevant
 
 - [ ] New task (non-breaking change which helps improve the system)
-- [ ] New feature (non-breaking change which add a functionality)
+- [ ] New feature (non-breaking change which adds functionality)
 - [ ] New File change/update
 - [ ] Documentation
 - [ ] Bug Fix (non-breaking change which fixes an issue)

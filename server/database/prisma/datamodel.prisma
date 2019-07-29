@@ -1,3 +1,10 @@
+type User {
+    id: ID! @id
+    name: String!
+    email: String! @unique
+    password: String!
+}
+
 type Location {
     id: ID! @id
     name: String!
@@ -7,3 +14,4 @@ type Location {
     parentLocation: Location @relation(name:"ParentLocation")
     nestedLocations: [Location] @relation(name: "NestedLocations", onDelete: CASCADE)
 }
+
