@@ -20,9 +20,7 @@ type Location {
   name: String!
   noOfFemales: Int!
   noOfMales: Int!
-  totalResidents: Int!
   parentLocation: Location
-  nestedLocations(where: LocationWhereInput, orderBy: LocationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Location!]
 }
 
 type LocationConnection {
@@ -36,14 +34,7 @@ input LocationCreateInput {
   name: String!
   noOfFemales: Int!
   noOfMales: Int!
-  totalResidents: Int!
   parentLocation: LocationCreateOneWithoutParentLocationInput
-  nestedLocations: LocationCreateManyWithoutNestedLocationsInput
-}
-
-input LocationCreateManyWithoutNestedLocationsInput {
-  create: [LocationCreateWithoutNestedLocationsInput!]
-  connect: [LocationWhereUniqueInput!]
 }
 
 input LocationCreateOneWithoutParentLocationInput {
@@ -51,22 +42,11 @@ input LocationCreateOneWithoutParentLocationInput {
   connect: LocationWhereUniqueInput
 }
 
-input LocationCreateWithoutNestedLocationsInput {
-  id: ID
-  name: String!
-  noOfFemales: Int!
-  noOfMales: Int!
-  totalResidents: Int!
-  parentLocation: LocationCreateOneWithoutParentLocationInput
-}
-
 input LocationCreateWithoutParentLocationInput {
   id: ID
   name: String!
   noOfFemales: Int!
   noOfMales: Int!
-  totalResidents: Int!
-  nestedLocations: LocationCreateManyWithoutNestedLocationsInput
 }
 
 type LocationEdge {
@@ -83,8 +63,6 @@ enum LocationOrderByInput {
   noOfFemales_DESC
   noOfMales_ASC
   noOfMales_DESC
-  totalResidents_ASC
-  totalResidents_DESC
 }
 
 type LocationPreviousValues {
@@ -92,65 +70,6 @@ type LocationPreviousValues {
   name: String!
   noOfFemales: Int!
   noOfMales: Int!
-  totalResidents: Int!
-}
-
-input LocationScalarWhereInput {
-  id: ID
-  id_not: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_gt: ID
-  id_gte: ID
-  id_contains: ID
-  id_not_contains: ID
-  id_starts_with: ID
-  id_not_starts_with: ID
-  id_ends_with: ID
-  id_not_ends_with: ID
-  name: String
-  name_not: String
-  name_in: [String!]
-  name_not_in: [String!]
-  name_lt: String
-  name_lte: String
-  name_gt: String
-  name_gte: String
-  name_contains: String
-  name_not_contains: String
-  name_starts_with: String
-  name_not_starts_with: String
-  name_ends_with: String
-  name_not_ends_with: String
-  noOfFemales: Int
-  noOfFemales_not: Int
-  noOfFemales_in: [Int!]
-  noOfFemales_not_in: [Int!]
-  noOfFemales_lt: Int
-  noOfFemales_lte: Int
-  noOfFemales_gt: Int
-  noOfFemales_gte: Int
-  noOfMales: Int
-  noOfMales_not: Int
-  noOfMales_in: [Int!]
-  noOfMales_not_in: [Int!]
-  noOfMales_lt: Int
-  noOfMales_lte: Int
-  noOfMales_gt: Int
-  noOfMales_gte: Int
-  totalResidents: Int
-  totalResidents_not: Int
-  totalResidents_in: [Int!]
-  totalResidents_not_in: [Int!]
-  totalResidents_lt: Int
-  totalResidents_lte: Int
-  totalResidents_gt: Int
-  totalResidents_gte: Int
-  AND: [LocationScalarWhereInput!]
-  OR: [LocationScalarWhereInput!]
-  NOT: [LocationScalarWhereInput!]
 }
 
 type LocationSubscriptionPayload {
@@ -175,40 +94,13 @@ input LocationUpdateInput {
   name: String
   noOfFemales: Int
   noOfMales: Int
-  totalResidents: Int
   parentLocation: LocationUpdateOneWithoutParentLocationInput
-  nestedLocations: LocationUpdateManyWithoutNestedLocationsInput
-}
-
-input LocationUpdateManyDataInput {
-  name: String
-  noOfFemales: Int
-  noOfMales: Int
-  totalResidents: Int
 }
 
 input LocationUpdateManyMutationInput {
   name: String
   noOfFemales: Int
   noOfMales: Int
-  totalResidents: Int
-}
-
-input LocationUpdateManyWithoutNestedLocationsInput {
-  create: [LocationCreateWithoutNestedLocationsInput!]
-  delete: [LocationWhereUniqueInput!]
-  connect: [LocationWhereUniqueInput!]
-  set: [LocationWhereUniqueInput!]
-  disconnect: [LocationWhereUniqueInput!]
-  update: [LocationUpdateWithWhereUniqueWithoutNestedLocationsInput!]
-  upsert: [LocationUpsertWithWhereUniqueWithoutNestedLocationsInput!]
-  deleteMany: [LocationScalarWhereInput!]
-  updateMany: [LocationUpdateManyWithWhereNestedInput!]
-}
-
-input LocationUpdateManyWithWhereNestedInput {
-  where: LocationScalarWhereInput!
-  data: LocationUpdateManyDataInput!
 }
 
 input LocationUpdateOneWithoutParentLocationInput {
@@ -220,36 +112,15 @@ input LocationUpdateOneWithoutParentLocationInput {
   connect: LocationWhereUniqueInput
 }
 
-input LocationUpdateWithoutNestedLocationsDataInput {
-  name: String
-  noOfFemales: Int
-  noOfMales: Int
-  totalResidents: Int
-  parentLocation: LocationUpdateOneWithoutParentLocationInput
-}
-
 input LocationUpdateWithoutParentLocationDataInput {
   name: String
   noOfFemales: Int
   noOfMales: Int
-  totalResidents: Int
-  nestedLocations: LocationUpdateManyWithoutNestedLocationsInput
-}
-
-input LocationUpdateWithWhereUniqueWithoutNestedLocationsInput {
-  where: LocationWhereUniqueInput!
-  data: LocationUpdateWithoutNestedLocationsDataInput!
 }
 
 input LocationUpsertWithoutParentLocationInput {
   update: LocationUpdateWithoutParentLocationDataInput!
   create: LocationCreateWithoutParentLocationInput!
-}
-
-input LocationUpsertWithWhereUniqueWithoutNestedLocationsInput {
-  where: LocationWhereUniqueInput!
-  update: LocationUpdateWithoutNestedLocationsDataInput!
-  create: LocationCreateWithoutNestedLocationsInput!
 }
 
 input LocationWhereInput {
@@ -297,18 +168,7 @@ input LocationWhereInput {
   noOfMales_lte: Int
   noOfMales_gt: Int
   noOfMales_gte: Int
-  totalResidents: Int
-  totalResidents_not: Int
-  totalResidents_in: [Int!]
-  totalResidents_not_in: [Int!]
-  totalResidents_lt: Int
-  totalResidents_lte: Int
-  totalResidents_gt: Int
-  totalResidents_gte: Int
   parentLocation: LocationWhereInput
-  nestedLocations_every: LocationWhereInput
-  nestedLocations_some: LocationWhereInput
-  nestedLocations_none: LocationWhereInput
   AND: [LocationWhereInput!]
   OR: [LocationWhereInput!]
   NOT: [LocationWhereInput!]
@@ -316,6 +176,7 @@ input LocationWhereInput {
 
 input LocationWhereUniqueInput {
   id: ID
+  name: String
 }
 
 scalar Long
