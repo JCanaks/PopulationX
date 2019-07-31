@@ -7,11 +7,9 @@ type User {
 
 type Location {
     id: ID! @id
-    name: String!
+    name: String!@unique
     noOfFemales: Int!
     noOfMales: Int!
-    totalResidents: Int!
     parentLocation: Location @relation(name:"ParentLocation")
-    nestedLocations: [Location] @relation(name: "NestedLocations", onDelete: CASCADE)
 }
 
