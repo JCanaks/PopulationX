@@ -1,4 +1,6 @@
 import authenticateUser from '../utils/middleware/authMiddleware';
+import locationValidation from '../utils/middleware/validators/location';
+
 
 export const typeDef = `
 
@@ -99,5 +101,15 @@ export const resolvers = {
 export const authMiddleware = {
   Mutation: {
     createLocation: authenticateUser,
+    updateLocation: authenticateUser,
+    deleteLocation: authenticateUser,
+  },
+};
+
+export const locationValidationMiddleware = {
+  Mutation: {
+    createLocation: locationValidation.createLocation,
+    updateLocation: locationValidation.updateLocation,
+    deleteLocation: locationValidation.deleteLocation,
   },
 };
