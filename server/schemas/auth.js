@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import 'dotenv/config';
+import authValidation from '../utils/middleware/validators/auth';
 
 const { APP_SECRET } = process.env;
 
@@ -56,5 +57,12 @@ export const resolvers = {
         user,
       };
     },
+  },
+};
+
+export const authValidationMiddleware = {
+  Mutation: {
+    signup: authValidation.signup,
+    login: authValidation.login,
   },
 };
