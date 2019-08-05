@@ -1,0 +1,11 @@
+version: "2"
+plugins:
+  duplication:
+    enabled: false
+    config:
+      languages:
+      - javascript
+exclude_patterns:
+  - server/__test__/**/*
+  - server/database/**/*
+  - server/generated/**/*

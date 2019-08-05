@@ -15,6 +15,22 @@ services:
             port: 5432
             user: prisma
             password: prisma
+  prisma_test:
+    image: prismagraphql/prisma:1.34
+    restart: always
+    ports:
+      - '4499:4499'
+    environment:
+      PRISMA_CONFIG: |
+        port: 4499
+        databases:
+          default:
+            connector: postgres
+            host: postgres
+            port: 5432
+            database: prisma_test
+            user: prisma
+            password: prisma
   postgres:
     image: postgres:10.3
     restart: always

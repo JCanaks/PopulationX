@@ -24,14 +24,8 @@ const validationErrors = {
   },
 };
 
-const signupRules = (userInput) => {
-  const rules = {
-    name: ['required', 'min:2', 'max:50'],
-    email: 'required|email',
-    password: ['required', 'min:4', 'max:50'],
-  };
-
-  const validation = new Validator(userInput, rules, {
+const customValidationMessages = {
+  signup: {
     'required.name': validationErrors.name.required,
     'required.email': validationErrors.email.required,
     'required.password': validationErrors.password.required,
@@ -40,7 +34,42 @@ const signupRules = (userInput) => {
     'max.name': validationErrors.name.max,
     'max.password': validationErrors.password.max,
     'email.email': validationErrors.email.email,
-  });
+  },
+  login: {
+    'required.email': validationErrors.email.required,
+    'required.password': validationErrors.password.required,
+    'min.password': validationErrors.password.min,
+    'max.password': validationErrors.password.max,
+    'email.email': validationErrors.email.email,
+  },
+  createLocation: {
+    'required.name': validationErrors.name.required,
+    'min.name': validationErrors.name.min,
+    'max.name': validationErrors.name.max,
+    'min.locatedIn': validationErrors.locatedIn.min,
+    'max.locatedIn': validationErrors.locatedIn.max,
+  },
+  updateLocation: {
+    'required.id': validationErrors.id.required,
+    'min.name': validationErrors.name.min,
+    'max.name': validationErrors.name.max,
+    'min.locatedIn': validationErrors.locatedIn.min,
+    'max.locatedIn': validationErrors.locatedIn.max,
+  },
+  deleteLocation: {
+    'required.id': validationErrors.id.required,
+  },
+};
+
+const signupRules = (userInput) => {
+  const rules = {
+    name: ['required', 'min:2', 'max:50'],
+    email: 'required|email',
+    password: ['required', 'min:4', 'max:50'],
+  };
+
+  const validation = new Validator(userInput, rules,
+    customValidationMessages.signup);
 
   if (validation.fails()) {
     return validation.errors.all();
@@ -54,13 +83,8 @@ const loginRules = (userInput) => {
     password: ['required', 'min:4', 'max:50'],
   };
 
-  const validation = new Validator(userInput, rules, {
-    'required.email': validationErrors.email.required,
-    'required.password': validationErrors.password.required,
-    'min.password': validationErrors.password.min,
-    'max.password': validationErrors.password.max,
-    'email.email': validationErrors.email.email,
-  });
+  const validation = new Validator(userInput, rules, 
+    customValidationMessages.login);
 
   if (validation.fails()) {
     return validation.errors.all();
@@ -74,13 +98,8 @@ const createLocationRules = (userInput) => {
     locatedIn: ['min:2', 'max:50'],
   };
 
-  const validation = new Validator(userInput, rules, {
-    'required.name': validationErrors.name.required,
-    'min.name': validationErrors.name.min,
-    'max.name': validationErrors.name.max,
-    'min.locatedIn': validationErrors.locatedIn.min,
-    'max.locatedIn': validationErrors.locatedIn.max,
-  });
+  const validation = new Validator(userInput, rules, 
+    customValidationMessages.createLocation);
 
   if (validation.fails()) {
     return validation.errors.all();
@@ -95,13 +114,8 @@ const updateLocationRules = (userInput) => {
     locatedIn: ['min:2', 'max:50'],
   };
 
-  const validation = new Validator(userInput, rules, {
-    'required.id': validationErrors.id.required,
-    'min.name': validationErrors.name.min,
-    'max.name': validationErrors.name.max,
-    'min.locatedIn': validationErrors.locatedIn.min,
-    'max.locatedIn': validationErrors.locatedIn.max,
-  });
+  const validation = new Validator(userInput, rules,
+    customValidationMessages.updateLocation);
 
   if (validation.fails()) {
     return validation.errors.all();
@@ -114,9 +128,8 @@ const deleteLocationRules = (userInput) => {
     id: 'required',
   };
 
-  const validation = new Validator(userInput, rules, {
-    'required.id': validationErrors.id.required,
-  });
+  const validation = new Validator(userInput, rules,
+    customValidationMessages.deleteLocation);
 
   if (validation.fails()) {
     return validation.errors.all();
