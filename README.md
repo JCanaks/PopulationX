@@ -95,6 +95,16 @@ Navigate to `http://localhost:4000` to test the GraphQL API with the GraphQL pla
 
 ![GraphQL playground with a sample signup query](docs/signup-query.png?raw=true "GraphQL playground with a sample signup query")
 
+### Run Tests
+To run tests locally ensure that the prisma server is started by running the command:
+```
+docker-compose up -d
+```
+After that, run the command below to run tests and view coverage report
+
+```
+npm test
+```
 
 ### API Docs
 The GraphQL Playground is a powerful GraphQl IDE that helps you work interactively with the GraphQL API. One of its cool features is the documentation explorer which enables you visualize the structure of the GraphQL schema. This self documenting GraphQL feature enables you to easily understand the schema structure of the application and the structure of the data to be returned when writing GraphQL queries. This documentation can be accessed by clicking on the `DOCS` tab on the right side of the playground 

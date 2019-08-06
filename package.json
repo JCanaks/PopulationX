@@ -8,6 +8,7 @@
     "dev-start": "nodemon --exec babel-node server/index.js",
     "build": "babel server --out-dir dist",
     "serve": "node dist/index.js",
+    "test": "jest --coverage",
     "lint": "./node_modules/.bin/eslint"
   },
   "repository": {
@@ -24,9 +25,13 @@
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
     "@babel/node": "^7.5.5",
+    "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.5.5",
+    "apollo-server-express": "^2.8.1",
+    "apollo-server-testing": "^2.8.1",
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.0.0",
+    "graphql-middleware": "^3.0.3",
     "graphql-yoga": "^1.18.1",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
@@ -39,6 +44,7 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
+    "jest": "^24.8.0",
     "nodemon": "^1.19.1"
   }
 }

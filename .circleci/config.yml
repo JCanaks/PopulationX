@@ -1,0 +1,59 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+  build:
+    machine: true 
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: Install node
+          command: |
+            curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+            [ -s "${NVM_DIR}/nvm.sh" ] && \. "${NVM_DIR}/nvm.sh"
+            nvm install 10
+            nvm alias default 10
+            echo "[ -s \"${NVM_DIR}/nvm.sh\" ] && . \"${NVM_DIR}/nvm.sh\"" >> $BASH_ENV
+
+      - run: 
+          name: Install dependencies
+          command: 'npm install'
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run:
+          name: Install Prisma
+          command: 'npm install -g prisma'
+
+      - run:
+          name: Update details for testing in the prisma.yml file
+          command: |
+              cd ./server/database/prisma/
+              cp prisma.test.yml prisma.yml
+              cat prisma.yml
+
+      - run:
+          name: Start the prisma server
+          command: |
+              docker-compose up -d
+              sleep 30
+              cd ./server/database/prisma
+              prisma deploy
+      - run: 
+          name: Setup Code Climate test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter                   
+
+      - run: 
+          name: Run test with code coverage report
+          command: |
+            ./cc-test-reporter before-build
+            npm test
+            ./cc-test-reporter after-build

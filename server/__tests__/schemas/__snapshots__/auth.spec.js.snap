@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing auth resolvers Login with invalid user input 1`] = `
+Array [
+  [GraphQLError: {"email":["Please enter an email in the specified field"],"password":["Please enter a password in the specified field"]}],
+]
+`;
+
+exports[`Testing auth resolvers Login with valid user input 1`] = `
+Object {
+  "login": Object {
+    "user": Object {
+      "email": "jsignup@mail.com",
+      "name": "TestUser Signup",
+    },
+  },
+}
+`;
+
+exports[`Testing auth resolvers Signup with invalid user input 1`] = `
+Array [
+  [GraphQLError: {"name":["Please enter a name in the specified field"],"email":["Please enter an email in the specified field"],"password":["Please enter a password in the specified field"]}],
+]
+`;
+
+exports[`Testing auth resolvers Signup with valid user input 1`] = `
+Object {
+  "signup": Object {
+    "user": Object {
+      "email": "jsignup@mail.com",
+      "name": "TestUser Signup",
+    },
+  },
+}
+`;
