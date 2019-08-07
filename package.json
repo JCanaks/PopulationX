@@ -8,7 +8,7 @@
     "dev-start": "nodemon --exec babel-node server/index.js",
     "build": "babel server --out-dir dist",
     "serve": "node dist/index.js",
-    "test": "jest --coverage",
+    "test": "jest --coverage --runInBand",
     "lint": "./node_modules/.bin/eslint"
   },
   "repository": {
@@ -29,6 +29,7 @@
     "@babel/preset-env": "^7.5.5",
     "apollo-server-express": "^2.8.1",
     "apollo-server-testing": "^2.8.1",
+    "babel-core": "^7.0.0-bridge.0",
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.0.0",
     "graphql-middleware": "^3.0.3",

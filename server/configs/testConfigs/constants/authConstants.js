@@ -19,3 +19,8 @@ export const LOGIN_USER = `
       }
     }
 `;
+
+export const GET_WELCOME_MESSAGE = `
+query {
+  info
+}`;

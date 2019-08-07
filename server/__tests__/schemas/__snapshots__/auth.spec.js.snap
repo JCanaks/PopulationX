@@ -1,5 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Testing auth resolvers Login with an invalid password 1`] = `
+Array [
+  [GraphQLError: Invalid Password],
+]
+`;
+
+exports[`Testing auth resolvers Login with invalid user information 1`] = `
+Array [
+  [GraphQLError: No such user found],
+]
+`;
+
 exports[`Testing auth resolvers Login with invalid user input 1`] = `
 Array [
   [GraphQLError: {"email":["Please enter an email in the specified field"],"password":["Please enter a password in the specified field"]}],

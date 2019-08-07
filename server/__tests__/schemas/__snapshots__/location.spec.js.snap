@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing location resolvers Creating a location with invalid input 1`] = `
+Array [
+  [GraphQLError: Variable "$noOfFemales" of required type "Int!" was not provided.],
+  [GraphQLError: Variable "$noOfMales" of required type "Int!" was not provided.],
+]
+`;
+
+exports[`Testing location resolvers Creating a location with name and locatedIn of invalid max value 1`] = `
+Array [
+  [GraphQLError: Variable "$noOfFemales" of required type "Int!" was not provided.],
+  [GraphQLError: Variable "$noOfMales" of required type "Int!" was not provided.],
+]
+`;
+
+exports[`Testing location resolvers Creating a location with name and locatedIn of invalid min value 1`] = `
+Array [
+  [GraphQLError: Variable "$noOfFemales" of required type "Int!" was not provided.],
+  [GraphQLError: Variable "$noOfMales" of required type "Int!" was not provided.],
+]
+`;
+
+exports[`Testing location resolvers Creating a location with valid user input 1`] = `
+Object {
+  "createLocation": Object {
+    "childLocations": Array [],
+    "name": "lagos",
+    "noOfFemales": 1000,
+    "noOfMales": 950,
+    "parentLocation": null,
+    "totalResidents": 1950,
+  },
+}
+`;
+
+exports[`Testing location resolvers Deleting a Location 1`] = `
+Object {
+  "deleteLocation": Object {
+    "name": "Lasgidi",
+  },
+}
+`;
+
+exports[`Testing location resolvers Deleting a Location with no id specified 1`] = `
+Array [
+  [GraphQLError: {"id":["Please enter an id in the specified field"]}],
+]
+`;
+
+exports[`Testing location resolvers Getting the list of locations available 1`] = `
+Object {
+  "allLocations": Array [
+    Object {
+      "childLocations": Array [],
+      "name": "Lasgidi",
+      "noOfFemales": 2000,
+      "noOfMales": 1950,
+      "parentLocation": null,
+      "totalResidents": 3950,
+    },
+  ],
+}
+`;
+
+exports[`Testing location resolvers Updating a location with name and locatedIn of invalid max values 1`] = `
+Array [
+  [GraphQLError: {"name":["Name should have a maximum of 50 characters"],"locatedIn":["LocatedIn should have a maximum of 50 characters"]}],
+]
+`;
+
+exports[`Testing location resolvers Updating a location with name and locatedIn of invalid min values 1`] = `
+Array [
+  [GraphQLError: {"name":["Name should be a minimum of 2 characters"],"locatedIn":["LocatedIn should have a minimum of 2 characters"]}],
+]
+`;
+
+exports[`Testing location resolvers Updating a location with no user input 1`] = `
+Array [
+  [GraphQLError: Variable "$id" of required type "ID!" was not provided.],
+]
+`;
+
+exports[`Testing location resolvers Updating a location with valid user input 1`] = `
+Object {
+  "updateLocation": Object {
+    "childLocations": Array [],
+    "name": "Lasgidi",
+    "noOfFemales": 2000,
+    "noOfMales": 1950,
+    "parentLocation": null,
+    "totalResidents": 3950,
+  },
+}
+`;

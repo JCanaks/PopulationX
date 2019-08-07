@@ -4,7 +4,7 @@ import { createTestClient } from 'apollo-server-testing';
 import { resolvers, typeDefs, middlewares } from '../../graphqlServer';
 import prismaMockInstance from './prismaMockInstance';
 
-const createGraphqlTestClient = () => {
+const createGraphqlTestClient = (request) => {
   const schema = makeExecutableSchema({
     typeDefs,
     resolvers,
@@ -12,12 +12,11 @@ const createGraphqlTestClient = () => {
   const schemaWithMiddleware = applyMiddleware(schema, ...middlewares);
   const testServer = new ApolloServer({
     schema: schemaWithMiddleware,
-    context: request => ({
-      ...request,
+    context: {
+      request,
       prisma: prismaMockInstance,
-    }),
+    },
   });
-
   return createTestClient(testServer);
 };
 

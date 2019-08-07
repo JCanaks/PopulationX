@@ -1,9 +1,7 @@
-import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import 'dotenv/config';
 import authValidation from '../utils/middleware/validators/auth';
-
-const { APP_SECRET } = process.env;
+import generateToken from '../utils/services/tokenService';
 
 export const typeDef = `
   type User {
@@ -27,9 +25,7 @@ export const resolvers = {
     signup: async (parent, args, context) => {
       const password = await bcrypt.hash(args.password, 10);
       const user = await context.prisma.createUser({ ...args, password });
-      const token = jwt.sign({
-        userId: user.id,
-      }, APP_SECRET, { expiresIn: '3h' });
+      const token = generateToken({ userId: user.id }, '8h');
 
       return {
         token,
@@ -48,9 +44,7 @@ export const resolvers = {
         throw new Error('Invalid Password');
       }
 
-      const token = jwt.sign({
-        userId: user.id,
-      }, APP_SECRET, { expiresIn: '3h' });
+      const token = generateToken({ userId: user.id }, '8h');
 
       return {
         token,

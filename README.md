@@ -11,6 +11,8 @@ The API enables users to:
 
 * Delete a specified location.
 
+For this application authentication is required for creating, deleting and updating a location. 
+
 
 
 ## Technologies Used
