@@ -83,7 +83,7 @@ const loginRules = (userInput) => {
     password: ['required', 'min:4', 'max:50'],
   };
 
-  const validation = new Validator(userInput, rules, 
+  const validation = new Validator(userInput, rules,
     customValidationMessages.login);
 
   if (validation.fails()) {
@@ -98,7 +98,7 @@ const createLocationRules = (userInput) => {
     locatedIn: ['min:2', 'max:50'],
   };
 
-  const validation = new Validator(userInput, rules, 
+  const validation = new Validator(userInput, rules,
     customValidationMessages.createLocation);
 
   if (validation.fails()) {

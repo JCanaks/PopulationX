@@ -1,9 +1,9 @@
 import '@babel/polyfill';
 import prismaMockInstance from '../../configs/testConfigs/prismaMockInstance';
 import mockData from '../../configs/testConfigs/mockData';
-import clearData from '../../utils/helpers/testHelpers';
+import { clearData } from '../../utils/helpers/testHelpers';
 import createGraphqlTestServer from '../../configs/testConfigs/testClient';
-import { SIGNUP_USER, LOGIN_USER } from '../../configs/testConfigs/testConstants';
+import { SIGNUP_USER, LOGIN_USER } from '../../configs/testConfigs/constants/authConstants';
 
 const { signupInput, loginInput } = mockData;
 const { mutate } = createGraphqlTestServer();
@@ -55,6 +55,28 @@ describe('Testing auth resolvers', () => {
 
   test('Login with invalid user input', async () => {
     const args = loginInput.invalidUserInput;
+    const { errors } = await mutate({
+      mutation: LOGIN_USER,
+      variables: args,
+    });
+    
+    expect(errors).toBeDefined();
+    expect(errors).toMatchSnapshot();
+  });
+
+  test('Login with an invalid password', async () => {
+    const args = loginInput.invalidPassword;
+    const { errors } = await mutate({
+      mutation: LOGIN_USER,
+      variables: args,
+    });
+
+    expect(errors).toBeDefined();
+    expect(errors).toMatchSnapshot();
+  });
+
+  test('Login with invalid user information', async () => {
+    const args = loginInput.invalidUser;
     const { errors } = await mutate({
       mutation: LOGIN_USER,
       variables: args,

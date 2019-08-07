@@ -1,4 +1,7 @@
 # PopulationX
+<a href="https://codeclimate.com/github/JCanaks/PopulationX/maintainability"><img src="https://api.codeclimate.com/v1/badges/e15fc443ac09c8562358/maintainability" /></a>
+<a href="https://codeclimate.com/github/JCanaks/PopulationX/test_coverage"><img src="https://api.codeclimate.com/v1/badges/e15fc443ac09c8562358/test_coverage" /></a>
+
 **PopulationX** is a simple and easy-to-use Population Management API built with GraphQL. The system provides information about various locations such as the total number of residents in each location broken down by gender, and the sum total of residents in a location.
 
 The API enables users to:
@@ -10,6 +13,8 @@ The API enables users to:
 * Update data for a specific location
 
 * Delete a specified location.
+
+For this application authentication is required for creating, deleting and updating a location. 
 
 
 
