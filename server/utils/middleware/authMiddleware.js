@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 const { APP_SECRET } = process.env;
 
 const authenticateUser = async (resolve, parent, args, context, info) => {
-  const Authorization = context.request.get('Authorization');
+  const Authorization = context.request.headers.authorization;
 
   if (Authorization) {
     const token = Authorization.replace('Bearer ', '');

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing default home resolver in the graphQL server Introductory default welcome message 1`] = `
+Object {
+  "info": "Welcome to PopulationX, an Easy-to-use Population Management System",
+}
+`;
