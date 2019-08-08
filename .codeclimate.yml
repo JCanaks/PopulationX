@@ -6,6 +6,7 @@ plugins:
       languages:
       - javascript
 exclude_patterns:
-  - server/__test__/**/*
+  - server/__tests__/**/*
+  - server/__tests__/
   - server/database/**/*
   - server/generated/**/*
