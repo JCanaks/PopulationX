@@ -16,6 +16,6 @@ var models = [
 exports.Prisma = prisma_lib_1.makePrismaClientClass({
   typeDefs,
   models,
-  endpoint: `http://localhost:4488`
+  endpoint: `https://populationx-service-479bd4649d.herokuapp.com/populationx/dev`
 });
 exports.prisma = new exports.Prisma();
